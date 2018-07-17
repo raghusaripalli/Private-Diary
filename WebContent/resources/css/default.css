@@ -1,0 +1,18 @@
+fieldset {
+	border: solid 	1px #000 !important;
+	padding: 10px 10px;
+}
+
+legend {
+	width:auto;
+	margin:0 10px;
+}
+
+input.btn.btn-primary {
+	color: #000;
+	border-color: #DDD;
+	background-color: #99e3e6;
+}
+nav{
+	background-color:#e6c099	
+}
