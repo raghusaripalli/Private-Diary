@@ -6,11 +6,18 @@ import javax.faces.bean.RequestScoped;
 @ManagedBean
 @RequestScoped
 public class User {
-	private String uname, password, fullname, email, mobile, joindate;
+	private String uname, password, fullname, email, mobile, joindate, message;
 	
 	public String login() {
+		User u = UserDao.login(uname, password);
+		if (u!=null) {
+			return "/home?faces-redirect=true";
+		}
+		else {
+			message="Sorry! Invalid Credentials";
+			return "login";
+		}
 		
-		return "home";
 	}
 	
 	public String getUname() {
@@ -59,5 +66,13 @@ public class User {
 
 	public void setJoindate(String joindate) {
 		this.joindate = joindate;
+	}
+	
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
 	}
 }

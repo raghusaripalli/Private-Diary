@@ -11,7 +11,7 @@
 			<h:form>
 				<div class="form-group col-12 col-sm-6">
 					<label for="uname">Username</label>
-					<h:inputText id="uname" value="#{user.name}"
+					<h:inputText id="uname" value="#{user.uname}"
 						styleClass="form-control" p:required="required"
 						p:placeholder="Username"></h:inputText>
 				</div>
@@ -26,12 +26,14 @@
 						action="#{user.login}"></h:commandButton>
 				</div>
 				<div class="col-12 col-sm-6">
+					<h:outputText styleClass="text-danger" value="#{user.message}" />
+				</div>
+				<div class="col-12 col-sm-6">
 					<p />
 					<a href="register.xhtml">New User? Register</a>
 					<p />
 					<a href="recoverpassword.xhtml">Forgot Password?</a>
 					<p />
-					<h:outputText value="#{user.message}" />
 
 				</div>
 			</h:form>

@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	template="template.xhtml"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+	
+	<ui:define name="title">Registration - PrivateDiary</ui:define>
+	<ui:define name="content">
+		<script type="javascript/text">
+		function validate() {
+            var pwd1 = $("#pwd").val();
+            var pwd2 = $("#cnfpwd").val();
+            if ( pwd1 != pwd2) {
+                alert("Sorry! Passwords do not match!");
+                $("#confirmPassword").focus();
+                return false;
+            }
+            return true;
+        }
+		</script>
+		<fieldset>
+			<legend>Registration Details</legend>
+			<h:form>
+				<div class="form-group col-12 col-sm-6">
+					<label for="uname">Username</label>
+					<h:inputText id="uname" value="#{user.uname}"
+						styleClass="form-control" p:required="required"
+						p:placeholder="Username"></h:inputText>
+				</div>
+				<div class="form-group col-12 col-sm-6">
+					<label for="pwd">Password</label>
+					<h:inputSecret id="pwd" value="#{user.password}"
+						styleClass="form-control pwd" p:required="required"
+						p:placeholder="Password"></h:inputSecret>
+				</div>
+				<div class="form-group col-12 col-sm-6">
+					<label for="cnfpwd">Confirm Password</label>
+					<h:inputSecret id="cnfpwd" styleClass="form-control pwd" onblur="validate()"
+					p:required="required" p:placeholder="Confirm Password"></h:inputSecret>
+				</div>
+				<div class="form-group col-12 col-sm-6">
+					<label for="fullname">Fullname</label>
+					<h:inputText id="fullname" value="#{user.fullname}"
+						styleClass="form-control" p:required="required"
+						p:placeholder="Fullname"></h:inputText>
+				</div>
+				<div class="form-group col-12 col-sm-6">
+					<label for="emailaddress">Email Address</label>
+					<h:inputText p:type="email" id=""emailaddress"" value="#{user.email}"
+						styleClass="form-control" p:required="required"
+						p:placeholder="Email Address"></h:inputText>
+				</div>
+				<div class="form-group col-12 col-sm-6">
+					<h:commandButton styleClass="btn btn-primary" value="Register"
+						action="#{user.register}"></h:commandButton>
+				</div>
+				<div class="col-12 col-sm-6">
+					<h:outputText styleClass="text-danger" value="#{user.message}" />
+				</div>
+				<div class="col-12 col-sm-6">
+					<p />
+					<a href="register.xhtml">New User? Register</a>
+					<p />
+					<a href="recoverpassword.xhtml">Forgot Password?</a>
+					<p />
+
+				</div>
+			</h:form>
+		</fieldset>
+	</ui:define>
+
+</ui:composition>
